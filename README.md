@@ -14,14 +14,96 @@ Un composant Angular se compose de trois parties principales :
 2. **Style** : Le CSS qui définit l'apparence de la vue.
 3. **Logique** : Le TypeScript qui définit le comportement du composant.
 
+### Étape 1 : Créer un Nouveau Composant Standalone
+
+Utilisez Angular CLI pour générer un nouveau composant standalone :
+
+```bash
+ng generate component nom-du-composant --standalone
+```
+
+### Étape 2 : Modifier le Composant Standalone
+
+Ouvrez le fichier `nom-du-composant.component.ts` et ajoutez du contenu à votre composant :
+
+```typescript
+import { Component } from "@angular/core";
+
+@Component({
+  selector: "app-nom-du-composant",
+  templateUrl: "./nom-du-composant.component.html",
+  styleUrls: ["./nom-du-composant.component.css"],
+  standalone: true,
+})
+export class NomDuComposantComponent {
+  titre: string = "Bonjour, Angular !";
+
+  afficherMessage() {
+    alert("Message affiché depuis le composant !");
+  }
+}
+```
+
+Ensuite, modifiez le fichier `nom-du-composant.component.html` pour ajouter du contenu HTML :
+
+```html
+<div>
+  <h1>{{ titre }}</h1>
+  <button (click)="afficherMessage()">Cliquez-moi</button>
+</div>
+```
+
+### Étape 3 : Importer le Composant Standalone dans `app.component.ts`
+
+Ouvrez le fichier `app.component.ts` et importez le nouveau composant standalone :
+
+```typescript
+import { Component } from "@angular/core";
+import { RouterOutlet } from "@angular/router";
+import { NomDuComposantComponent } from "./nom-du-composant/nom-du-composant.component";
+
+@Component({
+  selector: "app-root",
+  standalone: true,
+  imports: [RouterOutlet, NomDuComposantComponent],
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
+})
+export class AppComponent {
+  title = "atelier-angular";
+}
+```
+
+### Étape 4 : Utiliser le Composant dans le Template Principal
+
+Ouvrez le fichier `app.component.html` et ajoutez le sélecteur de votre composant :
+
+```html
+<app-nom-du-composant></app-nom-du-composant>
+```
+
+### Étape 5 : Lancer l'Application
+
+Lancez votre application pour voir le composant en action :
+
+```bash
+ng serve
+```
+
+Ouvrez votre navigateur et allez à l'adresse `http://localhost:4200`. Vous devriez voir le contenu de votre composant affiché.
+
+### Documentation Complète
+
+Voici la documentation mise à jour pour inclure toutes les étapes nécessaires :
+
 ### Création d'un Composant
 
 #### Utilisation de Angular CLI
 
-Pour créer un composant, vous pouvez utiliser Angular CLI, un outil en ligne de commande qui simplifie le développement Angular. Voici comment créer un composant :
+Pour créer un composant, vous pouvez utiliser Angular CLI, un outil en ligne de commande qui simplifie le développement Angular. Voici comment créer un composant standalone :
 
 ```bash
-ng generate component nom-du-composant
+ng generate component nom-du-composant --standalone
 ```
 
 Cette commande crée un dossier avec quatre fichiers :
@@ -44,6 +126,7 @@ import { Component } from "@angular/core";
   selector: "app-nom-du-composant",
   templateUrl: "./nom-du-composant.component.html",
   styleUrls: ["./nom-du-composant.component.css"],
+  standalone: true,
 })
 export class NomDuComposantComponent {
   titre: string = "Bonjour, Angular !";
@@ -71,57 +154,41 @@ h1 {
 }
 ```
 
-### Composants Standalone
+#### Utilisation du Composant dans l'Application
 
-Les composants standalone sont une fonctionnalité introduite pour simplifier la création de composants sans avoir besoin de les déclarer dans un module. Voici comment créer un composant standalone :
+Pour utiliser le composant standalone dans l'application, vous devez l'importer dans le composant principal (`app.component.ts`).
+
+**app.component.ts**
 
 ```typescript
 import { Component } from "@angular/core";
+import { RouterOutlet } from "@angular/router";
+import { NomDuComposantComponent } from "./nom-du-composant/nom-du-composant.component";
 
 @Component({
-  selector: "app-standalone-composant",
-  template: `<h1>Composant Standalone</h1>`,
+  selector: "app-root",
   standalone: true,
+  imports: [RouterOutlet, NomDuComposantComponent],
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
-export class StandaloneComposant {}
-```
-
-### Cycle de Vie des Composants
-
-Les composants Angular ont un cycle de vie qui comprend plusieurs étapes. Angular fournit des hooks de cycle de vie que vous pouvez utiliser pour exécuter du code à des moments spécifiques du cycle de vie du composant.
-
-#### Principaux Hooks de Cycle de Vie
-
-- **ngOnInit** : Appelé une fois que le composant est initialisé.
-- **ngOnChanges** : Appelé lorsque les propriétés liées aux données changent.
-- **ngOnDestroy** : Appelé juste avant que le composant soit détruit.
-
-#### Exemple d'Utilisation des Hooks
-
-```typescript
-import { Component, OnInit, OnChanges, OnDestroy, Input } from "@angular/core";
-
-@Component({
-  selector: "app-cycle-de-vie",
-  template: `<p>{{ message }}</p>`,
-})
-export class CycleDeVieComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() message: string;
-
-  ngOnInit() {
-    console.log("Composant initialisé");
-  }
-
-  ngOnChanges() {
-    console.log("Propriétés changées");
-  }
-
-  ngOnDestroy() {
-    console.log("Composant détruit");
-  }
+export class AppComponent {
+  title = "atelier-angular";
 }
 ```
 
-### Conclusion
+**app.component.html**
 
-Les composants sont au cœur du développement d'applications Angular. Ils permettent de créer des interfaces utilisateur modulaires et réutilisables. En comprenant la structure des composants, la création de composants standalone, et le cycle de vie des composants, vous serez bien équipé pour développer des applications Angular robustes et maintenables.
+```html
+<app-nom-du-composant></app-nom-du-composant>
+```
+
+### Lancer l'Application
+
+Enfin, lancez votre application pour voir le composant en action :
+
+```bash
+ng serve
+```
+
+Ouvrez votre navigateur et allez à l'adresse `http://localhost:4200`. Vous devriez voir le contenu de votre composant affiché.
