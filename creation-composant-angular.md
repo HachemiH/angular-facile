@@ -133,15 +133,13 @@ Créer un composant standalone pour un bouton d'incrémentation qui émet un év
 
 #### Objectif
 
-Créer un composant standalone qui contient deux boutons : un pour incrémenter et un pour décrémenter une valeur. Le composant parent doit écouter les événements émis par ces boutons et mettre à jour la valeur affichée en conséquence.
+Créer un composant standalone qui gère à la fois l'incrémentation et la décrémentation de la valeur du compteur. Le composant doit être autonome et réutilisable.
 
 #### Étapes de l'Exercice
 
 1. **Créer un Nouveau Composant Standalone**
 2. **Ajouter la Logique d'Incrémentation et de Décrémentation**
-3. **Émettre des Événements depuis le Composant**
-4. **Écouter les Événements dans le Composant Parent**
-5. **Afficher la Valeur Incrémentée et Décrémentée**
+3. **Afficher la Valeur Incrémentée et Décrémentée**
 
 [Solution Exercice 2](./exercices/2-composant-increment-decrement-solution.md)
 
