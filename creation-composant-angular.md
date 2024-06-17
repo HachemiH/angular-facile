@@ -125,7 +125,7 @@ Créer un composant standalone pour un bouton d'incrémentation qui émet un év
 4. **Écouter l'Événement dans le Composant Parent**
 5. **Afficher la Valeur Incrémentée**
 
-[Solution](./exercices/1-composant-increment-solution.md)
+[Solution Exercice 1](./exercices/1-composant-increment-solution.md)
 
 ---
 
@@ -142,3 +142,5 @@ Créer un composant standalone qui contient deux boutons : un pour incrémenter 
 3. **Émettre des Événements depuis le Composant**
 4. **Écouter les Événements dans le Composant Parent**
 5. **Afficher la Valeur Incrémentée et Décrémentée**
+
+[Solution Exercice 2](./exercices/2-composant-increment-decrement-solution.md)
