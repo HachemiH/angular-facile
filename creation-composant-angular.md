@@ -108,3 +108,21 @@ ng serve
 ```
 
 Ouvrez votre navigateur et allez à l'adresse `http://localhost:4200`. Vous devriez voir le contenu de votre composant affiché.
+
+---
+
+## Exercice : Créer un Bouton d'Incrémentation
+
+#### Objectif
+
+Créer un composant standalone pour un bouton d'incrémentation qui émet un événement lorsqu'il est cliqué. Le composant parent doit écouter cet événement et incrémenter une valeur affichée à l'écran.
+
+#### Étapes de l'Exercice
+
+1. **Créer un Nouveau Composant Standalone**
+2. **Ajouter la Logique d'Incrémentation**
+3. **Émettre un Événement depuis le Composant**
+4. **Écouter l'Événement dans le Composant Parent**
+5. **Afficher la Valeur Incrémentée**
+
+[Solution](./exercices/1-composant-increment-solution.md)
