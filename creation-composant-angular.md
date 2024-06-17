@@ -144,3 +144,13 @@ Créer un composant standalone qui contient deux boutons : un pour incrémenter 
 5. **Afficher la Valeur Incrémentée et Décrémentée**
 
 [Solution Exercice 2](./exercices/2-composant-increment-decrement-solution.md)
+
+---
+
+### Exercice 3 : Séparer les Composants Incrément et Décrément
+
+#### Objectif
+
+Créer deux composants standalone distincts : un pour le bouton d'incrémentation et un pour le bouton de décrémentation. Le composant parent doit écouter les événements émis par ces boutons et mettre à jour la valeur affichée en conséquence.
+
+[Solution Exercice 3](./exercices/3-composant-increment-decrement-separes.md)
