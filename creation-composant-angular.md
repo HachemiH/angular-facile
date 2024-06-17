@@ -111,7 +111,7 @@ Ouvrez votre navigateur et allez à l'adresse `http://localhost:4200`. Vous devr
 
 ---
 
-## Exercice : Créer un Bouton d'Incrémentation
+## Exercice 1 : Créer un Bouton d'Incrémentation
 
 #### Objectif
 
@@ -126,3 +126,19 @@ Créer un composant standalone pour un bouton d'incrémentation qui émet un év
 5. **Afficher la Valeur Incrémentée**
 
 [Solution](./exercices/1-composant-increment-solution.md)
+
+---
+
+### Exercice 2 : Ajouter un Bouton de Décrémentation
+
+#### Objectif
+
+Créer un composant standalone qui contient deux boutons : un pour incrémenter et un pour décrémenter une valeur. Le composant parent doit écouter les événements émis par ces boutons et mettre à jour la valeur affichée en conséquence.
+
+#### Étapes de l'Exercice
+
+1. **Créer un Nouveau Composant Standalone**
+2. **Ajouter la Logique d'Incrémentation et de Décrémentation**
+3. **Émettre des Événements depuis le Composant**
+4. **Écouter les Événements dans le Composant Parent**
+5. **Afficher la Valeur Incrémentée et Décrémentée**
