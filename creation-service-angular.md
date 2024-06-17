@@ -16,19 +16,19 @@ Un service dans Angular est une classe qui encapsule des fonctionnalités ou des
 Pour créer un service, vous pouvez utiliser Angular CLI, un outil en ligne de commande qui simplifie le développement Angular. Voici comment créer un service :
 
 ```bash
-ng generate service counter
+ng generate service welcome
 ```
 
 Cette commande crée deux fichiers :
 
-- `counter.service.ts` : La classe du service.
-- `counter.service.spec.ts` : Les tests unitaires (optionnel).
+- `welcome.service.ts` : La classe du service.
+- `welcome.service.spec.ts` : Les tests unitaires (optionnel).
 
 ### Exemple de Service
 
-Voici un exemple de service simple qui gère un compteur :
+Voici un exemple de service simple qui gère un message de bienvenue :
 
-**counter.service.ts**
+**welcome.service.ts**
 
 ```typescript
 import { Injectable } from "@angular/core";
@@ -36,22 +36,25 @@ import { Injectable } from "@angular/core";
 @Injectable({
   providedIn: "root",
 })
-export class CounterService {
-  private _compteur: number = 0;
+export class WelcomeService {
+  private message: string = "Bienvenue sur notre site !";
 
-  get compteur(): number {
-    return this._compteur;
+  getMessage(): string {
+    return this.message;
   }
 
-  increment() {
-    this._compteur++;
-  }
-
-  decrement() {
-    this._compteur--;
+  setMessage(newMessage: string) {
+    this.message = newMessage;
   }
 }
 ```
+
+## Explication du Décorateur `@Injectable`
+
+Le décorateur `@Injectable` est utilisé pour indiquer qu'une classe peut être injectée en tant que dépendance. Voici une explication détaillée de ses propriétés :
+
+- **`@Injectable()`** : Ce décorateur marque la classe comme pouvant être injectée. Cela signifie qu'Angular peut créer une instance de cette classe et l'injecter dans d'autres classes qui en ont besoin.
+- **`providedIn: 'root'`** : Cette option indique qu'Angular doit fournir une instance unique de ce service au niveau de la racine de l'application. Cela signifie que le service sera disponible dans toute l'application, et une seule instance sera partagée entre tous les composants et services qui en ont besoin.
 
 ## Utilisation d'un Service dans un Composant
 
@@ -59,97 +62,42 @@ Pour utiliser un service dans un composant, vous devez l'injecter dans le constr
 
 ### Exemple de Composant Utilisant un Service
 
-**increment-button.component.ts**
+**welcome.component.ts**
 
 ```typescript
 import { Component } from "@angular/core";
-import { CounterService } from "../counter.service";
+import { WelcomeService } from "../welcome.service";
 
 @Component({
-  selector: "app-increment-button",
-  templateUrl: "./increment-button.component.html",
-  styleUrls: ["./increment-button.component.css"],
+  selector: "app-welcome",
+  templateUrl: "./welcome.component.html",
+  styleUrls: ["./welcome.component.css"],
   standalone: true,
 })
-export class IncrementButtonComponent {
-  constructor(public counterService: CounterService) {}
+export class WelcomeComponent {
+  message: string;
 
-  increment() {
-    this.counterService.increment();
+  constructor(private welcomeService: WelcomeService) {
+    this.message = this.welcomeService.getMessage();
+  }
+
+  updateMessage(newMessage: string) {
+    this.welcomeService.setMessage(newMessage);
+    this.message = this.welcomeService.getMessage();
   }
 }
 ```
 
-**increment-button.component.html**
+**welcome.component.html**
 
 ```html
 <div>
-  <p>Compteur : {{ counterService.compteur }}</p>
-  <button (click)="increment()">Incrémenter</button>
+  <p>{{ message }}</p>
+  <button (click)="updateMessage('Bienvenue à tous !')">
+    Changer le message
+  </button>
 </div>
 ```
-
-## Étapes Complètes pour Créer et Utiliser un Service
-
-1. **Créer un Service** : Utilisez Angular CLI pour générer un service.
-
-   ```bash
-   ng generate service counter
-   ```
-
-2. **Définir le Service** : Ajoutez la logique métier dans le service.
-
-   ```typescript
-   import { Injectable } from "@angular/core";
-
-   @Injectable({
-     providedIn: "root",
-   })
-   export class CounterService {
-     private _compteur: number = 0;
-
-     get compteur(): number {
-       return this._compteur;
-     }
-
-     increment() {
-       this._compteur++;
-     }
-
-     decrement() {
-       this._compteur--;
-     }
-   }
-   ```
-
-3. **Utiliser le Service dans un Composant** : Injectez le service dans le constructeur du composant et utilisez-le.
-
-   ```typescript
-   import { Component } from "@angular/core";
-   import { CounterService } from "../counter.service";
-
-   @Component({
-     selector: "app-increment-button",
-     templateUrl: "./increment-button.component.html",
-     styleUrls: ["./increment-button.component.css"],
-     standalone: true,
-   })
-   export class IncrementButtonComponent {
-     constructor(public counterService: CounterService) {}
-
-     increment() {
-       this.counterService.increment();
-     }
-   }
-   ```
-
-4. **Ajouter le Template HTML** : Ajoutez le template HTML pour afficher la valeur du compteur et le bouton d'incrémentation.
-   ```html
-   <div>
-     <p>Compteur : {{ counterService.compteur }}</p>
-     <button (click)="increment()">Incrémenter</button>
-   </div>
-   ```
 
 ## Conclusion
 
