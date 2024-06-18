@@ -118,31 +118,30 @@ cd my-app
    export class ShoppingListModule {}
    ```
 
-Je comprends, dans Angular 18, le fichier "app.module.ts" a été remplacé par "app.config.ts". Voici comment adapter l'étape 4 pour utiliser "app.config.ts" :
+#### Étape 4 : Utiliser les Modules dans l'Application Principale
 
-## Étape 4 : Utiliser les Modules dans l'Application Principale
+1. **Importer les Modules dans le Composant Racine**
 
-1. **Importer les Modules dans la Configuration de l'Application**
-
-   **app.config.ts**
+   **app.component.ts**
 
    ```typescript
-   import { ApplicationConfig } from "@angular/core";
-   import { provideRouter } from "@angular/router";
-   import { importProvidersFrom } from "@angular/core";
-   import { BrowserModule } from "@angular/platform-browser";
+   import { Component } from "@angular/core";
    import { WelcomeModule } from "./welcome/welcome.module";
    import { ShoppingListModule } from "./shopping-list/shopping-list.module";
 
-   export const appConfig: ApplicationConfig = {
-     providers: [
-       provideRouter([]),
-       importProvidersFrom(BrowserModule, WelcomeModule, ShoppingListModule),
-     ],
-   };
+   @Component({
+     selector: "app-root",
+     templateUrl: "./app.component.html",
+     styleUrls: ["./app.component.css"],
+     standalone: true,
+     imports: [WelcomeModule, ShoppingListModule],
+   })
+   export class AppComponent {
+     title = "my-app";
+   }
    ```
 
-   Dans ce fichier, nous importons les modules "WelcomeModule" et "ShoppingListModule", puis nous les ajoutons à la fonction `importProvidersFrom` avec "BrowserModule".
+   Dans ce fichier, nous importons les modules "WelcomeModule" et "ShoppingListModule", puis nous les ajoutons au tableau "imports" du décorateur `@Component`. Nous définissons également la propriété "standalone" à "true" pour indiquer que ce composant est un composant standalone.
 
 2. **Utiliser les Composants dans le Template Principal**
 
