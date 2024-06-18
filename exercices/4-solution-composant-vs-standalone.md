@@ -1,13 +1,8 @@
 # Exercice : Créer un Composant Standard et un Composant Standalone
 
-## Objectif
-
-1. Créer un composant standard (non standalone) pour afficher un message.
-2. Créer un composant standalone pour afficher un autre message.
-
 ## Étape 1 : Créer un Composant Standard
 
-## Utilisation de Angular CLI
+### Utilisation de Angular CLI
 
 Utilisez Angular CLI pour générer un composant standard appelé `standard-message` :
 
@@ -38,9 +33,36 @@ export class StandardMessageComponent {
 <p>{{ message }}</p>
 ```
 
-### Déclarer le Composant dans la Configuration de l'Application
+### Créer un Module pour le Composant Standard
 
-Ouvrez le fichier `app.config.ts` et ajoutez le composant `StandardMessageComponent` aux déclarations de la configuration.
+Utilisez Angular CLI pour générer un module appelé `standard` :
+
+```bash
+ng generate module standard
+```
+
+### Déclarer le Composant dans le Module
+
+Ouvrez le fichier `standard.module.ts` et ajoutez le composant `StandardMessageComponent` aux déclarations du module.
+
+**standard.module.ts**
+
+```typescript
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { StandardMessageComponent } from "./standard-message/standard-message.component";
+
+@NgModule({
+  declarations: [StandardMessageComponent],
+  imports: [CommonModule],
+  exports: [StandardMessageComponent],
+})
+export class StandardModule {}
+```
+
+### Importer le Module dans la Configuration de l'Application
+
+Ouvrez le fichier `app.config.ts` et ajoutez le module `StandardModule` aux imports de la configuration.
 
 **app.config.ts**
 
@@ -49,13 +71,12 @@ import { ApplicationConfig } from "@angular/core";
 import { provideRouter } from "@angular/router";
 import { importProvidersFrom } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { StandardMessageComponent } from "./standard-message/standard-message.component";
+import { StandardModule } from "./standard/standard.module";
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter([]),
-    importProvidersFrom(BrowserModule),
-    StandardMessageComponent,
+    importProvidersFrom(BrowserModule, StandardModule),
   ],
 };
 ```
@@ -153,5 +174,5 @@ Ouvrez votre navigateur et allez à l'adresse `http://localhost:4200`. Vous devr
 
 ## Explication
 
-- **Composant Standard** : Ce composant est déclaré dans la configuration de l'application (`app.config.ts`) et utilisé dans le template principal via son sélecteur.
+- **Composant Standard** : Ce composant est déclaré dans un module (`StandardModule`) et utilisé dans le template principal via son sélecteur.
 - **Composant Standalone** : Ce composant est autonome et n'a pas besoin d'être déclaré dans un module. Il est directement importé et utilisé dans le composant principal.
