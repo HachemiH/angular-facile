@@ -93,3 +93,47 @@ En tant que débutant, vous pouvez commencer par utiliser des composants standal
 Les modules sont un moyen d'organiser votre application Angular en groupes logiques de fonctionnalités. Ils vous aident à garder votre code organisé, à réutiliser des fonctionnalités, et à améliorer les performances de votre application.
 
 En comprenant les bases des modules, vous serez en mesure de structurer votre application de manière efficace à mesure qu'elle grandit et devient plus complexe.
+
+---
+
+# Exercice 5 : Créer une Application avec des Modules Simples
+
+## Objectif
+
+1. Créer un module pour afficher un message de bienvenue.
+2. Créer un module pour afficher une liste de courses.
+3. Utiliser ces modules dans l'application principale.
+
+## Consignes
+
+### Étape 1 : Créer un Nouveau Projet Angular
+
+1. Utilisez Angular CLI pour créer un nouveau projet nommé "my-app".
+2. Naviguez dans le dossier du projet.
+
+### Étape 2 : Créer le Module de Bienvenue
+
+1. Générez un nouveau module nommé "welcome" en utilisant Angular CLI.
+2. Créez un composant nommé "welcome-message" dans le module "welcome" en utilisant Angular CLI.
+3. Dans le fichier "welcome-message.component.ts", définissez une propriété "message" avec le texte "Bienvenue dans notre application !".
+4. Dans le fichier "welcome-message.component.html", affichez la propriété "message" dans une balise `<h2>`.
+5. Dans le fichier "welcome.module.ts", déclarez le composant "WelcomeMessageComponent" dans le tableau "declarations", importez-le dans le tableau "imports" et exportez-le dans le tableau "exports".
+
+### Étape 3 : Créer le Module de Liste de Courses
+
+1. Générez un nouveau module nommé "shopping-list" en utilisant Angular CLI.
+2. Créez un composant nommé "shopping-list" dans le module "shopping-list" en utilisant Angular CLI.
+3. Dans le fichier "shopping-list.component.ts", définissez une propriété "items" avec un tableau contenant quelques éléments de courses (par exemple, 'Pommes', 'Lait', 'Pain').
+4. Dans le fichier "shopping-list.component.html", affichez le titre "Liste de Courses" dans une balise `<h2>`, puis utilisez une boucle `*ngFor` pour afficher chaque élément de la propriété "items" dans une liste non ordonnée (`<ul>`).
+5. Dans le fichier "shopping-list.module.ts", déclarez le composant "ShoppingListComponent" dans le tableau "declarations", importez-le dans le tableau "imports" et exportez-le dans le tableau "exports".
+
+### Étape 4 : Utiliser les Modules dans l'Application Principale
+
+1. Dans le fichier "app.module.ts", importez les modules "WelcomeModule" et "ShoppingListModule", puis ajoutez-les au tableau "imports".
+2. Dans le fichier "app.component.html", utilisez les sélecteurs des composants "WelcomeMessageComponent" et "ShoppingListComponent" pour les afficher.
+
+### Étape 5 : Lancer l'Application
+
+1. Utilisez Angular CLI pour lancer l'application.
+2. Ouvrez votre navigateur et accédez à l'URL indiquée par Angular CLI.
+3. Vérifiez que vous voyez le message de bienvenue et la liste de courses.
