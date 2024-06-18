@@ -118,27 +118,31 @@ cd my-app
    export class ShoppingListModule {}
    ```
 
-## Étape 4 : Utiliser les Modules dans l'Application Principale
+Je comprends, dans Angular 18, le fichier "app.module.ts" a été remplacé par "app.config.ts". Voici comment adapter l'étape 4 pour utiliser "app.config.ts" :
 
-1. **Importer les Modules dans le Module Principal**
+#### Étape 4 : Utiliser les Modules dans l'Application Principale
 
-   **app.module.ts**
+1. **Importer les Modules dans la Configuration de l'Application**
+
+   **app.config.ts**
 
    ```typescript
-   import { NgModule } from "@angular/core";
+   import { ApplicationConfig } from "@angular/core";
+   import { provideRouter } from "@angular/router";
+   import { importProvidersFrom } from "@angular/core";
    import { BrowserModule } from "@angular/platform-browser";
-   import { AppComponent } from "./app.component";
    import { WelcomeModule } from "./welcome/welcome.module";
    import { ShoppingListModule } from "./shopping-list/shopping-list.module";
 
-   @NgModule({
-     declarations: [AppComponent],
-     imports: [BrowserModule, WelcomeModule, ShoppingListModule],
-     providers: [],
-     bootstrap: [AppComponent],
-   })
-   export class AppModule {}
+   export const appConfig: ApplicationConfig = {
+     providers: [
+       provideRouter([]),
+       importProvidersFrom(BrowserModule, WelcomeModule, ShoppingListModule),
+     ],
+   };
    ```
+
+   Dans ce fichier, nous importons les modules "WelcomeModule" et "ShoppingListModule", puis nous les ajoutons à la fonction `importProvidersFrom` avec "BrowserModule".
 
 2. **Utiliser les Composants dans le Template Principal**
 
