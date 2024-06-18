@@ -120,7 +120,7 @@ cd my-app
 
 Je comprends, dans Angular 18, le fichier "app.module.ts" a été remplacé par "app.config.ts". Voici comment adapter l'étape 4 pour utiliser "app.config.ts" :
 
-#### Étape 4 : Utiliser les Modules dans l'Application Principale
+## Étape 4 : Utiliser les Modules dans l'Application Principale
 
 1. **Importer les Modules dans la Configuration de l'Application**
 
