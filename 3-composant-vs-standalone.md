@@ -125,3 +125,14 @@ Un composant standalone est un composant qui peut être utilisé sans être déc
 ## Conclusion
 
 Les composants standalone offrent une manière plus simple et plus directe de créer et d'utiliser des composants dans Angular, sans la nécessité de les déclarer dans un module. Cela peut être particulièrement utile pour les petites applications ou les composants réutilisables. Cependant, pour les grandes applications où la modularité et l'organisation en modules sont importantes, les composants standard restent une pratique courante.
+
+---
+
+# Exercice : Créer un Composant Standard et un Composant Standalone
+
+## Objectif
+
+1. Créer un composant standard (non standalone) pour afficher un message.
+2. Créer un composant standalone pour afficher un autre message.
+
+[Solution Exercice 4](./exercices/4-solution-composant-vs-standalone.md)
