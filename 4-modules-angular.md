@@ -117,7 +117,7 @@ En comprenant les bases des modules, vous serez en mesure de structurer votre ap
 2. Créez un composant nommé "welcome-message" dans le module "welcome" en utilisant Angular CLI.
 3. Dans le fichier "welcome-message.component.ts", définissez une propriété "message" avec le texte "Bienvenue dans notre application !".
 4. Dans le fichier "welcome-message.component.html", affichez la propriété "message" dans une balise `<h2>`.
-5. Dans le fichier "welcome.module.ts", déclarez le composant "WelcomeMessageComponent" dans le tableau "declarations", importez-le dans le tableau "imports" et exportez-le dans le tableau "exports".
+5. Dans le fichier "welcome.module.ts", déclarez le composant "WelcomeMessageComponent" dans le tableau "declarations", exportez-le dans le tableau "exports".
 
 ### Étape 3 : Créer le Module de Liste de Courses
 
@@ -137,3 +137,5 @@ En comprenant les bases des modules, vous serez en mesure de structurer votre ap
 1. Utilisez Angular CLI pour lancer l'application.
 2. Ouvrez votre navigateur et accédez à l'URL indiquée par Angular CLI.
 3. Vérifiez que vous voyez le message de bienvenue et la liste de courses.
+
+[Solution Exercice 5](./exercices/5-solution-modules.md)
