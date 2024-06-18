@@ -125,7 +125,7 @@ En comprenant les bases des modules, vous serez en mesure de structurer votre ap
 2. Créez un composant nommé "shopping-list" dans le module "shopping-list" en utilisant Angular CLI.
 3. Dans le fichier "shopping-list.component.ts", définissez une propriété "items" avec un tableau contenant quelques éléments de courses (par exemple, 'Pommes', 'Lait', 'Pain').
 4. Dans le fichier "shopping-list.component.html", affichez le titre "Liste de Courses" dans une balise `<h2>`, puis utilisez une boucle `*ngFor` pour afficher chaque élément de la propriété "items" dans une liste non ordonnée (`<ul>`).
-5. Dans le fichier "shopping-list.module.ts", déclarez le composant "ShoppingListComponent" dans le tableau "declarations", importez-le dans le tableau "imports" et exportez-le dans le tableau "exports".
+5. Dans le fichier "shopping-list.module.ts", déclarez le composant "ShoppingListComponent" dans le tableau "declarations", exportez-le dans le tableau "exports".
 
 ### Étape 4 : Utiliser les Modules dans l'Application Principale
 
