@@ -118,7 +118,7 @@ cd my-app
    export class ShoppingListModule {}
    ```
 
-#### Étape 4 : Utiliser les Modules dans l'Application Principale
+## Étape 4 : Utiliser les Modules dans l'Application Principale
 
 1. **Importer les Modules dans le Composant Racine**
 
